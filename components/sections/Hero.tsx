@@ -25,13 +25,13 @@ export function Hero() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="#simulador"
+              href={{ pathname: "/", hash: "simulador" }}
               className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--habitta-forest)] transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               Simular orçamento em 2 minutos
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
+            <a
               href={DEFAULT_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
@@ -39,7 +39,7 @@ export function Hero() {
             >
               Falar no WhatsApp
               <Ruler className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
           <div className="flex flex-wrap gap-2 text-sm">
             {chips.map((chip) => (

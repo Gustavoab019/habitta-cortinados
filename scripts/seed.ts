@@ -41,24 +41,24 @@ async function main() {
   await connectToDatabase();
 
   const fabrics = [
-    { name: "Linho Areia", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer", priceTier: 1, isActive: true },
-    { name: "Veludo Noir", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout", priceTier: 3, isActive: true },
-    { name: "Algodão Neve", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout", priceTier: 2, isActive: true },
-    { name: "Linho Grafite", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout", priceTier: 2, isActive: true },
-    { name: "Wave Bruma", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer", priceTier: 1, isActive: true },
-    { name: "Wave Terra", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer", priceTier: 1, isActive: true },
-    { name: "Blackout Noite", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout", priceTier: 3, isActive: true },
-    { name: "Blackout Marfim", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout", priceTier: 2, isActive: true },
-    { name: "Algodão Pistache", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout", priceTier: 2, isActive: true },
-    { name: "Algodão Âmbar", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout", priceTier: 2, isActive: true }
+    { name: "Linho Areia", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer" as const, priceTier: 1 as const, isActive: true },
+    { name: "Veludo Noir", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout" as const, priceTier: 3 as const, isActive: true },
+    { name: "Algodão Neve", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout" as const, priceTier: 2 as const, isActive: true },
+    { name: "Linho Grafite", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout" as const, priceTier: 2 as const, isActive: true },
+    { name: "Wave Bruma", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer" as const, priceTier: 1 as const, isActive: true },
+    { name: "Wave Terra", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "sheer" as const, priceTier: 1 as const, isActive: true },
+    { name: "Blackout Noite", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout" as const, priceTier: 3 as const, isActive: true },
+    { name: "Blackout Marfim", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "blackout" as const, priceTier: 2 as const, isActive: true },
+    { name: "Algodão Pistache", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout" as const, priceTier: 2 as const, isActive: true },
+    { name: "Algodão Âmbar", supplier: "Habitta", imageUrl: "https://placehold.co/400x300", type: "dimout" as const, priceTier: 2 as const, isActive: true }
   ];
 
   const rails = [
-    { name: "Sem calha", kind: "none", imageUrl: "https://placehold.co/400x300", basePrice: 0, isActive: true },
-    { name: "Calha simples", kind: "single", imageUrl: "https://placehold.co/400x300", basePrice: 40, isActive: true },
-    { name: "Calha dupla", kind: "double", imageUrl: "https://placehold.co/400x300", basePrice: 65, isActive: true },
-    { name: "Calha motorizada", kind: "motorized", imageUrl: "https://placehold.co/400x300", basePrice: 120, isActive: true },
-    { name: "Calha décor", kind: "single", imageUrl: "https://placehold.co/400x300", basePrice: 80, isActive: true }
+    { name: "Sem calha", kind: "none" as const, imageUrl: "https://placehold.co/400x300", basePrice: 0, isActive: true },
+    { name: "Calha simples", kind: "single" as const, imageUrl: "https://placehold.co/400x300", basePrice: 40, isActive: true },
+    { name: "Calha dupla", kind: "double" as const, imageUrl: "https://placehold.co/400x300", basePrice: 65, isActive: true },
+    { name: "Calha motorizada", kind: "motorized" as const, imageUrl: "https://placehold.co/400x300", basePrice: 120, isActive: true },
+    { name: "Calha décor", kind: "single" as const, imageUrl: "https://placehold.co/400x300", basePrice: 80, isActive: true }
   ];
 
   await FabricModel.bulkWrite(

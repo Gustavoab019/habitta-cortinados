@@ -30,7 +30,7 @@ export function Measurement() {
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/checkout?medicao=1"
+                href={{ pathname: "/checkout", query: { medicao: "1" } }}
                 className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:shadow-lg"
               >
                 Adicionar medição no checkout

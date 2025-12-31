@@ -77,13 +77,13 @@ export async function createOrder(payload: OrderCreateInput, measurementFeeValue
 
 export async function listOrders(): Promise<OrderDto[]> {
   await connectToDatabase();
-  const orders = await OrderModel.find().sort({ createdAt: -1 }).lean<Order & { _id: Types.ObjectId }>();
+  const orders = await OrderModel.find().sort({ createdAt: -1 }).lean<Array<Order & { _id: Types.ObjectId }>>();
   return orders.map(mapOrderDocument);
 }
 
 export async function getOrderById(id: string): Promise<OrderDto | null> {
   await connectToDatabase();
-  const order = await OrderModel.findById(id).lean<Order & { _id: Types.ObjectId }>();
+  const order = await OrderModel.findById(id).lean<(Order & { _id: Types.ObjectId }) | null>();
   return order ? mapOrderDocument(order) : null;
 }
 

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { Route } from "next";
+import type { LucideIcon } from "lucide-react";
 import { ClipboardList, Home } from "lucide-react";
 
 interface SidebarProps {
@@ -9,7 +11,7 @@ export function Sidebar({ activePath }: SidebarProps) {
   const items = [
     { href: "/", label: "Início", icon: Home },
     { href: "/admin/pedidos", label: "Pedidos", icon: ClipboardList }
-  ];
+  ] satisfies Array<{ href: Route; label: string; icon: LucideIcon }>;
 
   return (
     <aside className="w-full max-w-xs border-r border-slate-200 bg-[var(--habitta-sand)]">

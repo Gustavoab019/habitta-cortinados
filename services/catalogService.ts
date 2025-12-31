@@ -46,8 +46,8 @@ export async function getCatalog(): Promise<CatalogResponse> {
     await connectToDatabase();
 
     const [fabrics, rails] = await Promise.all([
-      FabricModel.find({ isActive: true }).lean<Fabric & { _id: unknown }>(),
-      RailModel.find({ isActive: true }).lean<Rail & { _id: unknown }>()
+      FabricModel.find({ isActive: true }).lean<Array<Fabric & { _id: unknown }>>(),
+      RailModel.find({ isActive: true }).lean<Array<Rail & { _id: unknown }>>()
     ]);
 
     return {
