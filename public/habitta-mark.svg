@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Habitta mark">
+  <rect width="200" height="200" rx="20" fill="#f5f1e8" />
+  <g transform="translate(26 32)" fill="#4a2c1f">
+    <rect x="0" y="0" width="148" height="136" fill="none" stroke="#4a2c1f" stroke-width="8" />
+    <path d="M 18 10 Q 24 35, 18 65 Q 12 95, 18 122 Q 24 142, 18 145 L 18 10" />
+    <path d="M 48 10 Q 54 35, 48 65 Q 42 95, 48 122 Q 54 142, 48 145 L 48 10" />
+    <path d="M 78 10 Q 84 35, 78 65 Q 72 95, 78 122 Q 84 142, 78 145 L 78 10" />
+    <path d="M 108 10 Q 114 35, 108 65 Q 102 95, 108 122 Q 114 142, 108 145 L 108 10" />
+    <path d="M 18 10 L 48 10 L 48 145 L 18 145 Z" opacity="0.3" />
+    <path d="M 48 10 L 78 10 L 78 145 L 48 145 Z" opacity="0.5" />
+    <path d="M 78 10 L 108 10 L 108 145 L 78 145 Z" opacity="0.3" />
+    <path d="M 108 10 L 142 10 L 142 145 L 108 145 Z" opacity="0.1" />
+  </g>
+</svg>

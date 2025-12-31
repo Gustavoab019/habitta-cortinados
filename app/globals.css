@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ :root {
+  color-scheme: light;
+  --habitta-ink: #0f1f26;
+  --habitta-forest: #12332c;
+  --habitta-emerald: #1f7a67;
+  --habitta-sand: #FFFEF5;
+  --habitta-cream: #FFFEF5;
+ }
+
+ body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--habitta-cream);
+  color: var(--habitta-ink);
+ }
+
+.container-premium {
+  width: 100%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
