@@ -5,11 +5,13 @@ import { formatErrorMessage } from "@/lib/utils";
 import { orderUpdateSchema } from "@/schemas/order";
 import { getOrderById, updateOrder } from "@/services/orderService";
 
-type Params = { params: { id: string } };
+type Params = { params: Promise<{ id: string }> };
 
 export async function GET(_request: NextRequest, { params }: Params) {
+  const { id } = await params;
+
   try {
-    const order = await getOrderById(params.id);
+    const order = await getOrderById(id);
     if (!order) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
     }
@@ -21,13 +23,15 @@ export async function GET(_request: NextRequest, { params }: Params) {
 }
 
 export async function PATCH(request: NextRequest, { params }: Params) {
+  const { id } = await params;
+
   if (!isAdminRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     const payload = orderUpdateSchema.parse(await request.json());
-    const updated = await updateOrder(params.id, payload, env.MEASUREMENT_FEE);
+    const updated = await updateOrder(id, payload, env.MEASUREMENT_FEE);
     if (!updated) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
     }
