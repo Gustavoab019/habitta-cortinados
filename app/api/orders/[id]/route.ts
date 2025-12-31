@@ -5,6 +5,8 @@ import { formatErrorMessage } from "@/lib/utils";
 import { orderUpdateSchema } from "@/schemas/order";
 import { getOrderById, updateOrder } from "@/services/orderService";
 
+export const dynamic = 'force-dynamic';
+
 type Params = { params: Promise<{ id: string }> };
 
 export async function GET(_request: NextRequest, { params }: Params) {

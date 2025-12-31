@@ -6,6 +6,8 @@ import { orderCreateSchema } from "@/schemas/order";
 import { createOrder, listOrders } from "@/services/orderService";
 import { sendOrderConfirmationEmail } from "@/services/emailService";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const payload = orderCreateSchema.parse(await request.json());

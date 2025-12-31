@@ -29,30 +29,57 @@ const envSchema = z
     { message: "SMTP config must have all fields set or none" }
   );
 
-const parsed = envSchema.safeParse({
-  MONGODB_URI: process.env.MONGODB_URI,
-  ADMIN_TOKEN: process.env.ADMIN_TOKEN,
-  NEXT_PUBLIC_ADMIN_TOKEN: process.env.NEXT_PUBLIC_ADMIN_TOKEN,
-  NEXT_PUBLIC_MEASUREMENT_FEE: process.env.NEXT_PUBLIC_MEASUREMENT_FEE,
-  MEASUREMENT_FEE: process.env.MEASUREMENT_FEE,
-  SMTP_HOST: process.env.SMTP_HOST,
-  SMTP_PORT: process.env.SMTP_PORT,
-  SMTP_USER: process.env.SMTP_USER,
-  SMTP_PASSWORD: process.env.SMTP_PASSWORD,
-  SMTP_FROM: process.env.SMTP_FROM
-});
+let cachedEnv: {
+  MONGODB_URI: string;
+  ADMIN_TOKEN: string;
+  NEXT_PUBLIC_ADMIN_TOKEN?: string;
+  NEXT_PUBLIC_MEASUREMENT_FEE?: number;
+  MEASUREMENT_FEE: number;
+  SMTP_HOST?: string;
+  SMTP_PORT?: number;
+  SMTP_USER?: string;
+  SMTP_PASSWORD?: string;
+  SMTP_FROM?: string;
+} | null = null;
 
-if (!parsed.success) {
-  const formattedErrors = parsed.error.format();
-  throw new Error(`Invalid environment variables: ${JSON.stringify(formattedErrors, null, 2)}`);
+function getEnv() {
+  if (cachedEnv) {
+    return cachedEnv;
+  }
+
+  const parsed = envSchema.safeParse({
+    MONGODB_URI: process.env.MONGODB_URI,
+    ADMIN_TOKEN: process.env.ADMIN_TOKEN,
+    NEXT_PUBLIC_ADMIN_TOKEN: process.env.NEXT_PUBLIC_ADMIN_TOKEN,
+    NEXT_PUBLIC_MEASUREMENT_FEE: process.env.NEXT_PUBLIC_MEASUREMENT_FEE,
+    MEASUREMENT_FEE: process.env.MEASUREMENT_FEE,
+    SMTP_HOST: process.env.SMTP_HOST,
+    SMTP_PORT: process.env.SMTP_PORT,
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+    SMTP_FROM: process.env.SMTP_FROM
+  });
+
+  if (!parsed.success) {
+    const formattedErrors = parsed.error.format();
+    throw new Error(`Invalid environment variables: ${JSON.stringify(formattedErrors, null, 2)}`);
+  }
+
+  const envData = parsed.data;
+
+  cachedEnv = {
+    ...envData,
+    NEXT_PUBLIC_ADMIN_TOKEN: envData.NEXT_PUBLIC_ADMIN_TOKEN ?? envData.ADMIN_TOKEN,
+    NEXT_PUBLIC_MEASUREMENT_FEE: envData.NEXT_PUBLIC_MEASUREMENT_FEE ?? envData.MEASUREMENT_FEE
+  };
+
+  return cachedEnv;
 }
 
-const envData = parsed.data;
+export const env = new Proxy({} as ReturnType<typeof getEnv>, {
+  get(_target, prop) {
+    return getEnv()[prop as keyof ReturnType<typeof getEnv>];
+  }
+});
 
-export const env = {
-  ...envData,
-  NEXT_PUBLIC_ADMIN_TOKEN: envData.NEXT_PUBLIC_ADMIN_TOKEN ?? envData.ADMIN_TOKEN,
-  NEXT_PUBLIC_MEASUREMENT_FEE: envData.NEXT_PUBLIC_MEASUREMENT_FEE ?? envData.MEASUREMENT_FEE
-};
-
-export type Env = typeof env;
+export type Env = ReturnType<typeof getEnv>;
