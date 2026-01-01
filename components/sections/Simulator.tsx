@@ -16,8 +16,8 @@ export function Simulator() {
   const [model, setModel] = useState<string>(models[0]);
   const [fabric, setFabric] = useState<string>("");
   const [system, setSystem] = useState<string>(systems[0]);
-  const [width, setWidth] = useState<string>("");
-  const [height, setHeight] = useState<string>("");
+  const [width, setWidth] = useState<string>("0");
+  const [height, setHeight] = useState<string>("0");
   const [city, setCity] = useState<string>("");
   const [photoName, setPhotoName] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -59,8 +59,8 @@ export function Simulator() {
 
   const whatsappHref = buildWhatsappLink(
     `Olá! Gostaria de um orçamento.\nProduto: ${product}\nModelo: ${model}\nTecido: ${selectedFabricName}\nSistema: ${selectedRailName}\nMedidas: L=${
-      width || "aprox"
-    }cm x A=${height || "aprox"}cm\nCidade: ${city || "—"}\nMedição técnica: ${needsMeasurement ? "Sim" : "Não"}\nFoto: ${
+      width && Number(width) > 0 ? width : "aprox"
+    }cm x A=${height && Number(height) > 0 ? height : "aprox"}cm\nCidade: ${city || "—"}\nMedição técnica: ${needsMeasurement ? "Sim" : "Não"}\nFoto: ${
       photoName || "não enviada"
     }\nContato: ${name || "—"} / ${email || "—"} / ${phone || "—"}`
   );
@@ -93,8 +93,8 @@ export function Simulator() {
 
     setIsSubmitting(true);
     setStatus({ type: "idle" });
-    const widthCm = width ? Number(width) : undefined;
-    const heightCm = height ? Number(height) : undefined;
+    const widthCm = Number(width) || 0;
+    const heightCm = Number(height) || 0;
 
     try {
       const res = await fetch("/api/orders", {

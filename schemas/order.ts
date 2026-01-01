@@ -19,15 +19,10 @@ export const orderStatusSchema = z.enum([
 
 export const productTypeSchema = z.enum(["curtain_wave", "curtain_pleats", "pillow", "blind"]);
 
-export const measurementSchema = z
-  .object({
-    widthCm: z.number().positive().optional(),
-    heightCm: z.number().positive().optional()
-  })
-  .refine(
-    (value) => value.widthCm !== undefined || value.heightCm !== undefined || Object.keys(value).length === 0,
-    { message: "Provide at least one measurement value or leave the object empty." }
-  );
+export const measurementSchema = z.object({
+  widthCm: z.number().min(0).optional(),
+  heightCm: z.number().min(0).optional()
+});
 
 export const orderItemSchema = z.object({
   productType: productTypeSchema,

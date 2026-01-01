@@ -35,8 +35,16 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="border-t border-slate-200 bg-[var(--habitta-cream)] py-4 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} Habitta. Sob medida, sem erro, acabamento impecável.
+      <div className="border-t border-slate-200 bg-[var(--habitta-cream)] py-4 text-center text-xs text-slate-500 space-y-2">
+        <p>© {new Date().getFullYear()} Habitta. Sob medida, sem erro, acabamento impecável.</p>
+        <a
+          href={`https://wa.me/351913542470?text=${encodeURIComponent("Olá! Quero um website novo.")}`}
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-[var(--habitta-emerald)] hover:text-[var(--habitta-forest)]"
+        >
+          quero um website
+        </a>
       </div>
     </footer>
   );

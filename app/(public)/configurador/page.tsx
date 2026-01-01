@@ -87,6 +87,7 @@ export default function ConfiguradorPage() {
                 <input
                   type="number"
                   min={0}
+                  value={selection.width ?? ""}
                   className="rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-[var(--habitta-emerald)] focus:outline-none"
                   placeholder="250"
                   onChange={(event) => setSelection((prev) => ({ ...prev, width: event.target.value }))}
@@ -97,6 +98,7 @@ export default function ConfiguradorPage() {
                 <input
                   type="number"
                   min={0}
+                  value={selection.height ?? ""}
                   className="rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-[var(--habitta-emerald)] focus:outline-none"
                   placeholder="270"
                   onChange={(event) => setSelection((prev) => ({ ...prev, height: event.target.value }))}
