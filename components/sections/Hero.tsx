@@ -20,7 +20,7 @@ export function Hero() {
           <div className="space-y-4">
             <h1 className="text-4xl font-semibold leading-tight md:text-5xl">Cortinados e Estores por Medida, do Seu Jeito.</h1>
             <p className="text-lg text-slate-200">
-              Escolha o tecido, a calha e receba um orçamento personalizado no WhatsApp — sem compromisso.
+              Diga o tipo, a cidade e as medidas aproximadas. Você recebe a faixa de preço no WhatsApp em minutos.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -28,7 +28,7 @@ export function Hero() {
               href={{ pathname: "/", hash: "simulador" }}
               className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--habitta-forest)] transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Simular orçamento em 2 minutos
+              Receber faixa de preço no WhatsApp
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
@@ -37,7 +37,7 @@ export function Hero() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/50 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
             >
-              Falar no WhatsApp
+              Falar no WhatsApp agora
               <Ruler className="h-4 w-4" />
             </a>
           </div>
