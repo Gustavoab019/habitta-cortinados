@@ -135,7 +135,6 @@ export function Simulator() {
             </div>
             <div className="rounded-xl border border-slate-200 bg-[var(--habitta-cream)] p-4 text-sm text-slate-700">
               <p className="font-semibold text-[var(--habitta-forest)]">Âncora de preço</p>
-              <p>A partir de €X/m² (varia por tecido e sistema)</p>
               <p>Projetos comuns (250 x 250): €200 a €300</p>
               <p className="mt-2 text-xs text-slate-500">Enviamos faixa estimada com base em 2 medidas.</p>
             </div>

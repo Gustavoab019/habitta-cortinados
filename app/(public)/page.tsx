@@ -27,7 +27,7 @@ export default function LandingPage() {
           className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-2rem)] -translate-x-1/2 items-center justify-center gap-2 rounded-full bg-[var(--habitta-emerald)] px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl md:hidden"
         >
           <MessageCircle className="h-4 w-4" />
-          📲 Pedir orçamento
+          Pedir orçamento
         </a>
       </main>
       <Footer />
